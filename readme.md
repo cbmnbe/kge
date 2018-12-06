@@ -1,0 +1,3 @@
+'''
+python -m kge.app
+'''

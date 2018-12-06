@@ -1,0 +1,62 @@
+[
+    {
+        "sentence": "Find the actor named \"Tom Hanks\"",
+        "template": "MATCH (tom {name: \"Tom Hanks\"}) RETURN tom",
+        "context": "main"
+    },
+    {
+        "sentence": "Find the movie with title \"Cloud Atlas\"",
+        "template": "MATCH (cloudAtlas {title: \"Cloud Atlas\"}) RETURN cloudAtlas",
+        "context": "main"
+    },
+    {
+        "sentence": "Find 10 people",
+        "template": "MATCH (people:Person) RETURN people.name LIMIT 10",
+        "context": "main"
+    },
+    {
+        "sentence": "Find movies released in the 1990s",
+        "template": "MATCH (nineties:Movie) WHERE nineties.released >= 1990 AND nineties.released < 2000 RETURN nineties.title",
+        "context": "main"
+    },
+    {
+        "sentence": "List all Tom Hanks movies",
+        "template": "MATCH (tom:Person {name: \"Tom Hanks\"})-[:ACTED_IN]->(tomHanksMovies) RETURN tom,tomHanksMovies",
+        "context": "main"
+    },
+    {
+        "sentence": "Who directed \"Cloud Atlas\"?",
+        "template": "MATCH (cloudAtlas {title: \"Cloud Atlas\"})<-[:DIRECTED]-(directors) RETURN directors.name",
+        "context": "main"
+    },
+    {
+        "sentence": "Tom Hanks' co-actors",
+        "template": "MATCH (tom:Person {name:\"Tom Hanks\"})-[:ACTED_IN]->(m)<-[:ACTED_IN]-(coActors) RETURN coActors.name",
+        "context": "main"
+    },
+    {
+        "sentence": "How people are related to \"Cloud Atlas\"",
+        "template": "MATCH (people:Person)-[relatedTo]-(:Movie {title: \"Cloud Atlas\"}) RETURN people.name, Type(relatedTo), relatedTo",
+        "context": "main"
+    },
+    {
+        "sentence": "Movies and actors up to 4 \"hops\" away from Kevin Bacon",
+        "template": "MATCH (bacon:Person {name:\"Kevin Bacon\"})-[*1..4]-(hollywood)",
+        "context": "main"
+    },
+    {
+        "sentence": "Get mike's pnl",
+        "template": "match(m {name: 'Mike'}) return m.pnl",
+        "context": "main"
+    },
+    {
+        "sentence": "Get janet's pnl",
+        "template": "match(m {name: 'Janet'}) return m.pnl",
+        "context": "main"
+    },
+    {
+        "sentence": "Get my pnl",
+        "template": "match(m {name: 'Mike'}) return m.pnl",
+        "context": "main"
+    }
+]
